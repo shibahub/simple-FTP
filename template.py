@@ -1,1 +1,1 @@
-print("inuhub")
+print("I love shibainnu")
