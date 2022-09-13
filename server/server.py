@@ -40,7 +40,7 @@ while True:
         if comm=='ls':
             rc=call("./test.sh", shell=True)
             print(type(rc))
-            socket_server.send(rc)
+            socket_server.send(b'f{rc}')
         #print(comm.decode('utf-8'))
         #socket_server.send(msg.encode('utf-8'))
         #print('shiba')
