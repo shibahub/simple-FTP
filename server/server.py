@@ -42,6 +42,7 @@ def dowload(conn):
 
 def upload(conn):
     try:
+        f_name = conn.recv(1024)
         f_name = json.loads(f_name.decode())
         print(f'file name: {f_name.get("file_name")}')
         #receive file data from client
@@ -49,12 +50,12 @@ def upload(conn):
         #create file and write data
         f = open(f_name.get("file_name"), 'wb')
         f.write(data)
-        conn.close()
-        conn.close()
+        #conn.close()
+        #conn.close()
         f.close()
     except:
         print("[ERROR]")
-        conn.close()
+        #conn.close()
     return
 
 def listfile(conn):
@@ -103,9 +104,10 @@ try:
             
             msg= msg+f' USER:{addr}\nWant to download press (d), upload press (u):, show list press(ls), exit (q)'
             conn.sendall(msg.encode('utf-8'))
+            msg = ''
             comm = conn.recv(size)
             comm = comm.decode(code)
-        
+            #print(comm)
             if comm=='d':
                 dowload(conn)
             elif comm=='u':
