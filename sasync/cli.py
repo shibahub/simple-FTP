@@ -58,7 +58,7 @@ async def main():
         reader, writer = await asyncio.open_connection(REMOTE_ADDRESS, REMOTE_PORT)
         while True:
             print('********************************************')
-            data = input('command:')
+            data = input('command (ls,dwn,up):')
             if data == 'ls':
                 print('<============== LIST OF FILE ==============>')
                 writer.write(data.encode('utf8'))
